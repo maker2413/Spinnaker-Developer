@@ -1,6 +1,6 @@
 #!/bin/bash
 apply_manifest () {
-    cat $1 | sed "s/NAMESPACE/${NAMESPACE}/g" | sed "s/MINIO_PASSWORD/${MINO_PASSWORD}/g" | kubectl apply -f -
+    cat $1 | sed "s/NAMESPACE/${NAMESPACE}/g" | sed "s/MINIO_PASSWORD/${MINO_PASSWORD}/g" | sed "s/BASE_DIR/${BASE_DIR}/g" | kubectl apply -f -
 }
 
 set -e

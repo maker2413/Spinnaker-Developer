@@ -43,9 +43,9 @@ spec:
       volumes:
       - name: hal
         hostPath:
-          path: /etc/spinnaker/.hal
+          path: BASE_DIR/.hal
           type: DirectoryOrCreate
       - name: kube
         hostPath:
-          path: /etc/spinnaker/.kube
+          path: BASE_DIR/.kube
           type: DirectoryOrCreate
