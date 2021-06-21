@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: halyard
-  namespace: NAMESPACE
+  namespace: spinnaker
 spec:
   replicas: 1
   serviceName: halyard
@@ -43,9 +43,9 @@ spec:
       volumes:
       - name: hal
         hostPath:
-          path: BASE_DIR/.hal
+          path: /etc/spinnaker/.hal
           type: DirectoryOrCreate
       - name: kube
         hostPath:
-          path: BASE_DIR/.kube
+          path: /etc/spinnaker/.kube
           type: DirectoryOrCreate
