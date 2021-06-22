@@ -65,7 +65,7 @@ sudo chmod 755 /usr/local/bin/hal
 
 echo "Set up Kube Config"
 cp /etc/rancher/k3s/k3s.yaml ${BASE_DIR}/.kube/config
-sed -i "s/127.0.0.1/${PRIVATE_IP}/" ${BASE_DIR}/.kube/config
+sed -i "s|127.0.0.1|${PRIVATE_IP}|g" ${BASE_DIR}/.kube/config
 sudo chown -R 1000 ${BASE_DIR}
 
 echo "Creating Endpoint file"
