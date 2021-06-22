@@ -66,7 +66,6 @@ sudo chmod 755 /usr/local/bin/hal
 echo "Set up Kube Config"
 cp /etc/rancher/k3s/k3s.yaml ${BASE_DIR}/.kube/config
 sudo chown -R 1000 ${BASE_DIR}
-sleep 1
 sed -i -e "s|127.0.0.1|${PRIVATE_IP}|g" ${BASE_DIR}/.kube/config
 
 echo "Creating Endpoint file"
@@ -82,7 +81,6 @@ echo "Deploy MinIO"
 kubectl apply -f ${BASE_DIR}/templates/minio.yml
 
 echo "Configuring Halyard"
-cp /etc/rancher/k3s/k3s.yaml /etc/spinnaker/.kube/config
 hal config provider kubernetes enable
 hal config provider kubernetes account add default
 hal config storage s3 edit --endpoint "http://minio.$NAMESPACE:9000" --bucket $NAMESPACE --access-key-id minio --secret-access-key $MINIO_PASSWORD --path-style-access true
